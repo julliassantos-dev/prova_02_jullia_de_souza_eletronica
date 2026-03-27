@@ -30,34 +30,35 @@ let num = parseInt(prompt("O resistor tem 4 ou 5 faixas?"));
 
 if(num != 4 && num != 5){
     alert("As faixas não podem ser diferentes de 4 ou 5. Retorne e Digite novamente!");
+    return;
 }
 
-let c1 = pegarDados("Cor da 1a faixa: ");
-let c2 = pegarDados("Cor da 2a faixa: ");
+let c1 = pegarDados("Cor da 1ª faixa: ");
+let c2 = pegarDados("Cor da 2ª faixa: ");
 let valorBase, multiplicador, tolerancia;
 
 if(num === 4){
     
     valorBase = (c1.v * 10) + c2.v;
-    multiplicador = pegarDados("Cor da 3a faixa (Multiplicador): ").m;
-    tolerancia = pegarDados("Cor da 4a faixa (Tolerância): ").t
+    multiplicador = pegarDados("Cor da 3ª faixa (Multiplicador): ").m;
+    tolerancia = pegarDados("Cor da 4ª faixa (Tolerância): ").t
 
 }else {
-    let c3 = pegarDados("Cor da 3a faixa (Terceiro Dígito): ");
+    let c3 = pegarDados("Cor da 3ª faixa (Terceiro Dígito): ");
     valorBase = (c1.v * 100) + (c2.v * 10) + c3.v;
-    multiplicador = pegarDados("Cor da 4a faixa (Multiplicador): ").m;
-    tolerancia = pegarDados("Cor da 5a faixa (Tolerância): ").t;
+    multiplicador = pegarDados("Cor da 4ª faixa (Multiplicador): ").m;
+    tolerancia = pegarDados("Cor da 5ª faixa (Tolerância): ").t;
 }
 
 let ohms = valorBase * multiplicador;
 
 let resultadoFormatado;
 if (ohms >= 1000000) {
-    resultadoFormatado = (ohms / 1000000) + "Mohms";
+    resultadoFormatado = (ohms / 1000000) + "MΩ";
 }else if (ohms >= 1000){
-    resultadoFormatado = (ohms / 1000) + "Kohms";
+    resultadoFormatado = (ohms / 1000) + "KΩ";
 }else {
-    resultadoFormatado = ohms + " Ohms";
+    resultadoFormatado = ohms + " Ω";
 }
 
 alert("Resistor: " + resultadoFormatado + " +- " + tolerancia);
